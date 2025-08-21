@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>CRD Client Testing Tool</title>
 <style>
 body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;margin:0;background:#f5f7fb;color:#0b1220}
@@ -11,30 +11,27 @@ header{background:#0f172a;color:#fff;padding:16px 20px}
 .card{background:#fff;border-radius:16px;padding:16px;box-shadow:0 2px 10px rgba(15,23,42,.08)}
 .section-title{font-weight:700;margin:10px 0 8px;font-size:18px}
 .codebox{background:#0b1220;color:#a8ff60;border-radius:12px;padding:10px;overflow:auto;max-height:260px;white-space:pre}
-.badge{display:inline-flex;align-items:center;gap:8px;font-size:13px;background:#e2f2ff;color:#055;border-radius:999px;padding:4px 10px;margin-right:6px}
-.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-</style>
-</head>
+</style></head>
 <body>
 <header>
 <h1>CRD Client Testing Tool</h1>
 <div class="toolbar">
-<label>Request</label><select id="requestSelect"></select>
-<label>CRD Base</label><input id="serverUrl" placeholder="https://crd.davinci.hl7.org/r4"/>
-<button id="btnDiscovery">Discover Services</button>
-<label>Service</label><select id="serviceSelect"></select>
-<label>Service ID / URL</label><input id="serviceOverride" placeholder="order-sign-crd or https://.../cds-services/order-sign-crd"/>
-<label>Auth (Bearer)</label><input id="authToken" placeholder="paste token if required"/>
+  <label>Request</label><select id="requestSelect"></select>
+  <label>CRD Base</label><input id="serverUrl" placeholder="https://crd.davinci.hl7.org/r4"/>
+  <button id="btnDiscovery">Discover Services</button>
+  <label>Service</label><select id="serviceSelect"></select>
+  <label>Service ID / URL</label><input id="serviceOverride" placeholder="order-sign-crd or https://.../cds-services/order-sign-crd"/>
+  <label>Auth (Bearer)</label><input id="authToken" placeholder="paste token if required"/>
 </div>
 <div class="toolbar">
-<label>Build Prefetch</label><input type="checkbox" id="toggleBuildPrefetch" checked/>
-<label>Align to Discovery Keys</label><input type="checkbox" id="toggleAlignToDiscovery" checked/>
-<button id="btnInvoke">Invoke CRD</button>
+  <label>Build Prefetch</label><input type="checkbox" id="toggleBuildPrefetch" checked/>
+  <label>Align to Discovery Keys</label><input type="checkbox" id="toggleAlignToDiscovery" checked/>
+  <button id="btnInvoke">Invoke CRD</button>
 </div>
 </header>
 <div class="wrap">
-<div class="card"><div class="section-title">Raw Request</div><div class="codebox" id="rawRequest"></div></div>
-<div class="card"><div class="section-title">Raw Response</div><div class="codebox" id="rawResponse"></div></div>
+  <div class="card"><div class="section-title">Raw Request</div><div class="codebox" id="rawRequest"></div></div>
+  <div class="card"><div class="section-title">Raw Response</div><div class="codebox" id="rawResponse"></div></div>
 </div>
 <script>
 let currentRequest=null,lastResponse=null,discovered=null;
@@ -52,37 +49,40 @@ async function init(){
 async function load(name){
   const data=await fetch('/api/requests/'+encodeURIComponent(name)).then(r=>r.json());
   currentRequest=data; if(currentRequest && 'fhirServer' in currentRequest) delete currentRequest.fhirServer;
-  document.getElementById('rawRequest').textContent=JSON.stringify(currentRequest,null,2);
+  document.getElementById('rawRequest').textContent = JSON.stringify(currentRequest,null,2);
 }
 async function discover(){
   const base=document.getElementById('serverUrl').value.trim().replace(/\/+$/,'');
   discovered=await fetch('/api/discovery?serverUrl='+encodeURIComponent(base)).then(r=>r.json());
   const sel=document.getElementById('serviceSelect'); sel.innerHTML='';
   const services=(discovered.data&&(discovered.data.services||discovered.data['cds-services']))||[];
-  if(!services.length){ const o=document.createElement('option');o.textContent='No services';sel.appendChild(o);return; }
-  services.forEach((s,i)=>{const o=document.createElement('option');o.value=s.id;o.textContent=(s.name||s.title||s.id)+' ('+s.hook+')';o.dataset.index=i;sel.appendChild(o);});
+  if(!services.length){ const o=document.createElement('option'); o.textContent='No services'; sel.appendChild(o); return; }
+  services.forEach((s,i)=>{ const o=document.createElement('option'); o.value=s.id; o.textContent=(s.name||s.title||s.id)+' ('+s.hook+')'; o.dataset.index=i; sel.appendChild(o); });
 }
 function getSelectedServiceMeta(){
   const sel=document.getElementById('serviceSelect');
   const idx=sel.selectedOptions[0]?.dataset?.index;
   const services=(discovered?.data&&(discovered.data.services||discovered.data['cds-services']))||[];
-  return (idx!=null)? services[Number(idx)] : null;
+  return (idx!=null) ? services[Number(idx)] : null;
 }
 async function invoke(){
   const filename=document.getElementById('requestSelect').value;
-  const serviceOverride=document.getElementById('serviceOverride').value.trim();
   const serviceId=document.getElementById('serviceSelect').value;
+  const serviceOverride=document.getElementById('serviceOverride').value.trim();
   const serverUrl=document.getElementById('serverUrl').value.trim();
   const buildPrefetch=document.getElementById('toggleBuildPrefetch').checked;
   const alignToDiscovery=document.getElementById('toggleAlignToDiscovery').checked;
   const authToken=document.getElementById('authToken').value.trim();
-  if((!serviceId||serviceId==='No services') && !serviceOverride){ alert('Pick a service or type a Service ID / full URL.'); return; }
+  if((!serviceId||serviceId==='No services') && !serviceOverride){
+    alert('Pick a service or type a Service ID / full URL.'); return;
+  }
   const serviceMeta = alignToDiscovery ? getSelectedServiceMeta() : null;
-  const resp=await fetch('/api/invoke',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
-    filename, serviceId, serviceIdOverride: serviceOverride, serverUrl, buildPrefetch, serviceMeta, authToken
-  })});
+  const resp=await fetch('/api/invoke',{
+    method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({ filename, serviceId, serviceIdOverride: serviceOverride, serverUrl, buildPrefetch, serviceMeta, authToken })
+  });
   const data=await resp.json(); lastResponse=data;
-  document.getElementById('rawResponse').textContent=JSON.stringify(data,null,2);
+  document.getElementById('rawResponse').textContent = JSON.stringify(data,null,2);
 }
 init();
 </script>

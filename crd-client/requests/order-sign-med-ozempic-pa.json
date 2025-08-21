@@ -1,0 +1,258 @@
+{
+  "hook": "order-sign",
+  "hookInstance": "os-58c87077",
+  "user": "Practitioner/pra1255",
+  "context": {
+    "userId": "Practitioner/pra1255",
+    "patientId": "patPA06",
+    "selections": [
+      "MedicationRequest/med-ozempic-1"
+    ],
+    "draftOrders": {
+      "resourceType": "Bundle",
+      "type": "collection",
+      "entry": [
+        {
+          "resource": {
+            "resourceType": "MedicationRequest",
+            "id": "med-ozempic-1",
+            "status": "active",
+            "intent": "order",
+            "medicationCodeableConcept": {
+              "coding": [
+                {
+                  "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                  "code": "1993270",
+                  "display": "semaglutide 2 mg/1.5 mL"
+                }
+              ]
+            },
+            "subject": {
+              "reference": "Patient/patPA06"
+            },
+            "requester": {
+              "reference": "PractitionerRole/prr1"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "prefetch": {
+    "serviceRequestBundle": null,
+    "deviceRequestBundle": null,
+    "medicationRequestBundle": {
+      "resourceType": "Bundle",
+      "type": "searchset",
+      "total": 8,
+      "entry": [
+        {
+          "fullUrl": "MedicationRequest/med-ozempic-1",
+          "resource": {
+            "resourceType": "MedicationRequest",
+            "id": "med-ozempic-1",
+            "status": "active",
+            "intent": "order",
+            "medicationCodeableConcept": {
+              "coding": [
+                {
+                  "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                  "code": "1993270",
+                  "display": "semaglutide 2 mg/1.5 mL"
+                }
+              ]
+            },
+            "subject": {
+              "reference": "Patient/patPA06"
+            },
+            "requester": {
+              "reference": "PractitionerRole/prr1"
+            }
+          }
+        },
+        {
+          "fullUrl": "Patient/patPA06",
+          "resource": {
+            "resourceType": "Patient",
+            "id": "patPA06",
+            "name": [
+              {
+                "text": "Linda Young"
+              }
+            ],
+            "gender": "female",
+            "birthDate": "1972-11-11",
+            "address": [
+              {
+                "state": "WA"
+              }
+            ]
+          }
+        },
+        {
+          "fullUrl": "PractitionerRole/prr1",
+          "resource": {
+            "resourceType": "PractitionerRole",
+            "id": "prr1",
+            "practitioner": {
+              "reference": "Practitioner/pra1255"
+            },
+            "organization": {
+              "reference": "Organization/org123"
+            }
+          }
+        },
+        {
+          "fullUrl": "Practitioner/pra1255",
+          "resource": {
+            "resourceType": "Practitioner",
+            "id": "pra1255",
+            "name": [
+              {
+                "text": "Alice Smith, MD"
+              }
+            ]
+          }
+        },
+        {
+          "fullUrl": "Organization/org123",
+          "resource": {
+            "resourceType": "Organization",
+            "id": "org123",
+            "name": "Good Health Clinic"
+          }
+        },
+        {
+          "fullUrl": "Condition/cond-t2dm",
+          "resource": {
+            "resourceType": "Condition",
+            "id": "cond-t2dm",
+            "subject": {
+              "reference": "Patient/patPA06"
+            },
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "44054006",
+                  "display": "Type 2 diabetes mellitus"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "fullUrl": "Observation/obs-bmi",
+          "resource": {
+            "resourceType": "Observation",
+            "id": "obs-bmi",
+            "status": "final",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "39156-5",
+                  "display": "Body mass index"
+                }
+              ]
+            },
+            "subject": {
+              "reference": "Patient/patPA06"
+            },
+            "valueQuantity": {
+              "value": 34.2,
+              "unit": "kg/m2"
+            }
+          }
+        },
+        {
+          "fullUrl": "Observation/obs-a1c",
+          "resource": {
+            "resourceType": "Observation",
+            "id": "obs-a1c",
+            "status": "final",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "4548-4",
+                  "display": "Hemoglobin A1c/Hemoglobin.total in Blood"
+                }
+              ]
+            },
+            "subject": {
+              "reference": "Patient/patPA06"
+            },
+            "valueQuantity": {
+              "value": 8.2,
+              "unit": "%"
+            }
+          }
+        }
+      ]
+    },
+    "coverageBundle": {
+      "resourceType": "Bundle",
+      "type": "searchset",
+      "total": 3,
+      "entry": [
+        {
+          "fullUrl": "Coverage/covPA06",
+          "resource": {
+            "resourceType": "Coverage",
+            "id": "covPA06",
+            "status": "active",
+            "beneficiary": {
+              "reference": "Patient/patPA06"
+            },
+            "payor": [
+              {
+                "reference": "Organization/payerCMS"
+              }
+            ],
+            "class": [
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                      "code": "plan"
+                    }
+                  ]
+                },
+                "value": "Gold-MA"
+              }
+            ]
+          }
+        },
+        {
+          "fullUrl": "Patient/patPA06",
+          "resource": {
+            "resourceType": "Patient",
+            "id": "patPA06",
+            "name": [
+              {
+                "text": "Linda Young"
+              }
+            ],
+            "gender": "female",
+            "birthDate": "1972-11-11",
+            "address": [
+              {
+                "state": "WA"
+              }
+            ]
+          }
+        },
+        {
+          "fullUrl": "Organization/payerCMS",
+          "resource": {
+            "resourceType": "Organization",
+            "id": "payerCMS",
+            "name": "Example Health Plan (CMS-0057-Ready)"
+          }
+        }
+      ]
+    }
+  }
+}

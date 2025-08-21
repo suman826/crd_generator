@@ -1,12 +1,12 @@
 {
   "hook": "order-sign",
-  "hookInstance": "os-615fc6ab",
+  "hookInstance": "os-96df9ea0",
   "user": "Practitioner/pra1255",
   "context": {
     "userId": "Practitioner/pra1255",
-    "patientId": "pat015",
+    "patientId": "patPA08",
     "selections": [
-      "DeviceRequest/devreq-e0260-1"
+      "ServiceRequest/sr-g0180-1"
     ],
     "draftOrders": {
       "resourceType": "Bundle",
@@ -14,26 +14,24 @@
       "entry": [
         {
           "resource": {
-            "resourceType": "DeviceRequest",
-            "id": "devreq-e0260-1",
+            "resourceType": "ServiceRequest",
+            "id": "sr-g0180-1",
             "status": "draft",
-            "codeCodeableConcept": {
+            "intent": "order",
+            "code": {
               "coding": [
                 {
-                  "system": "https://www.cms.gov/medicare/coding/hcpcsreleasecodesets",
-                  "code": "E0260",
-                  "display": "Hospital bed, semi-electric"
+                  "system": "http://www.ama-assn.org/go/cpt-hcpcs",
+                  "code": "G0180",
+                  "display": "Home health plan of care certification"
                 }
               ]
             },
             "subject": {
-              "reference": "Patient/pat015"
+              "reference": "Patient/patPA08"
             },
             "requester": {
               "reference": "PractitionerRole/prr1"
-            },
-            "performer": {
-              "reference": "Organization/org123"
             }
           }
         }
@@ -41,65 +39,47 @@
     }
   },
   "prefetch": {
-    "serviceRequestBundle": null,
-    "deviceRequestBundle": {
+    "serviceRequestBundle": {
       "resourceType": "Bundle",
       "type": "searchset",
       "total": 6,
       "entry": [
         {
-          "fullUrl": "DeviceRequest/devreq-e0260-1",
+          "fullUrl": "ServiceRequest/sr-g0180-1",
           "resource": {
-            "resourceType": "DeviceRequest",
-            "id": "devreq-e0260-1",
+            "resourceType": "ServiceRequest",
+            "id": "sr-g0180-1",
             "status": "draft",
-            "codeCodeableConcept": {
+            "intent": "order",
+            "code": {
               "coding": [
                 {
-                  "system": "https://www.cms.gov/medicare/coding/hcpcsreleasecodesets",
-                  "code": "E0260",
-                  "display": "Hospital bed, semi-electric"
+                  "system": "http://www.ama-assn.org/go/cpt-hcpcs",
+                  "code": "G0180",
+                  "display": "Home health plan of care certification"
                 }
               ]
             },
             "subject": {
-              "reference": "Patient/pat015"
+              "reference": "Patient/patPA08"
             },
             "requester": {
               "reference": "PractitionerRole/prr1"
-            },
-            "performer": {
-              "reference": "Organization/org123"
             }
           }
         },
         {
-          "fullUrl": "Device/dev-bed-1",
-          "resource": {
-            "resourceType": "Device",
-            "id": "dev-bed-1",
-            "type": {
-              "coding": [
-                {
-                  "system": "https://www.cms.gov/medicare/coding/hcpcsreleasecodesets",
-                  "code": "E0260"
-                }
-              ]
-            }
-          }
-        },
-        {
-          "fullUrl": "Patient/pat015",
+          "fullUrl": "Patient/patPA08",
           "resource": {
             "resourceType": "Patient",
-            "id": "pat015",
+            "id": "patPA08",
             "name": [
               {
-                "text": "William Oster"
+                "text": "Mary Johnson"
               }
             ],
-            "gender": "male",
-            "birthDate": "1980-06-15",
+            "gender": "female",
+            "birthDate": "1948-08-08",
             "address": [
               {
                 "state": "MA"
@@ -139,9 +119,29 @@
             "id": "org123",
             "name": "Good Health Clinic"
           }
+        },
+        {
+          "fullUrl": "Condition/cond-debility",
+          "resource": {
+            "resourceType": "Condition",
+            "id": "cond-debility",
+            "subject": {
+              "reference": "Patient/patPA08"
+            },
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "248279007",
+                  "display": "Physical deconditioning"
+                }
+              ]
+            }
+          }
         }
       ]
     },
+    "deviceRequestBundle": null,
     "medicationRequestBundle": null,
     "coverageBundle": {
       "resourceType": "Bundle",
@@ -149,33 +149,46 @@
       "total": 3,
       "entry": [
         {
-          "fullUrl": "Coverage/cov015",
+          "fullUrl": "Coverage/covPA08",
           "resource": {
             "resourceType": "Coverage",
-            "id": "cov015",
+            "id": "covPA08",
             "status": "active",
             "beneficiary": {
-              "reference": "Patient/pat015"
+              "reference": "Patient/patPA08"
             },
             "payor": [
               {
-                "reference": "Organization/payer1"
+                "reference": "Organization/payerCMS"
+              }
+            ],
+            "class": [
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                      "code": "plan"
+                    }
+                  ]
+                },
+                "value": "Gold-MA"
               }
             ]
           }
         },
         {
-          "fullUrl": "Patient/pat015",
+          "fullUrl": "Patient/patPA08",
           "resource": {
             "resourceType": "Patient",
-            "id": "pat015",
+            "id": "patPA08",
             "name": [
               {
-                "text": "William Oster"
+                "text": "Mary Johnson"
               }
             ],
-            "gender": "male",
-            "birthDate": "1980-06-15",
+            "gender": "female",
+            "birthDate": "1948-08-08",
             "address": [
               {
                 "state": "MA"
@@ -184,11 +197,11 @@
           }
         },
         {
-          "fullUrl": "Organization/payer1",
+          "fullUrl": "Organization/payerCMS",
           "resource": {
             "resourceType": "Organization",
-            "id": "payer1",
-            "name": "Example Health Plan"
+            "id": "payerCMS",
+            "name": "Example Health Plan (CMS-0057-Ready)"
           }
         }
       ]

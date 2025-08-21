@@ -1,12 +1,12 @@
 {
   "hook": "order-sign",
-  "hookInstance": "os-615fc6ab",
+  "hookInstance": "os-172f5dcf",
   "user": "Practitioner/pra1255",
   "context": {
     "userId": "Practitioner/pra1255",
-    "patientId": "pat015",
+    "patientId": "patPA02",
     "selections": [
-      "DeviceRequest/devreq-e0260-1"
+      "DeviceRequest/devreq-e0424-1"
     ],
     "draftOrders": {
       "resourceType": "Bundle",
@@ -15,25 +15,22 @@
         {
           "resource": {
             "resourceType": "DeviceRequest",
-            "id": "devreq-e0260-1",
+            "id": "devreq-e0424-1",
             "status": "draft",
             "codeCodeableConcept": {
               "coding": [
                 {
                   "system": "https://www.cms.gov/medicare/coding/hcpcsreleasecodesets",
-                  "code": "E0260",
-                  "display": "Hospital bed, semi-electric"
+                  "code": "E0424",
+                  "display": "Stationary compressed oxygen system"
                 }
               ]
             },
             "subject": {
-              "reference": "Patient/pat015"
+              "reference": "Patient/patPA02"
             },
             "requester": {
               "reference": "PractitionerRole/prr1"
-            },
-            "performer": {
-              "reference": "Organization/org123"
             }
           }
         }
@@ -45,64 +42,46 @@
     "deviceRequestBundle": {
       "resourceType": "Bundle",
       "type": "searchset",
-      "total": 6,
+      "total": 7,
       "entry": [
         {
-          "fullUrl": "DeviceRequest/devreq-e0260-1",
+          "fullUrl": "DeviceRequest/devreq-e0424-1",
           "resource": {
             "resourceType": "DeviceRequest",
-            "id": "devreq-e0260-1",
+            "id": "devreq-e0424-1",
             "status": "draft",
             "codeCodeableConcept": {
               "coding": [
                 {
                   "system": "https://www.cms.gov/medicare/coding/hcpcsreleasecodesets",
-                  "code": "E0260",
-                  "display": "Hospital bed, semi-electric"
+                  "code": "E0424",
+                  "display": "Stationary compressed oxygen system"
                 }
               ]
             },
             "subject": {
-              "reference": "Patient/pat015"
+              "reference": "Patient/patPA02"
             },
             "requester": {
               "reference": "PractitionerRole/prr1"
-            },
-            "performer": {
-              "reference": "Organization/org123"
             }
           }
         },
         {
-          "fullUrl": "Device/dev-bed-1",
-          "resource": {
-            "resourceType": "Device",
-            "id": "dev-bed-1",
-            "type": {
-              "coding": [
-                {
-                  "system": "https://www.cms.gov/medicare/coding/hcpcsreleasecodesets",
-                  "code": "E0260"
-                }
-              ]
-            }
-          }
-        },
-        {
-          "fullUrl": "Patient/pat015",
+          "fullUrl": "Patient/patPA02",
           "resource": {
             "resourceType": "Patient",
-            "id": "pat015",
+            "id": "patPA02",
             "name": [
               {
-                "text": "William Oster"
+                "text": "William Carter"
               }
             ],
             "gender": "male",
-            "birthDate": "1980-06-15",
+            "birthDate": "1945-05-12",
             "address": [
               {
-                "state": "MA"
+                "state": "FL"
               }
             ]
           }
@@ -139,6 +118,49 @@
             "id": "org123",
             "name": "Good Health Clinic"
           }
+        },
+        {
+          "fullUrl": "Condition/cond-copd",
+          "resource": {
+            "resourceType": "Condition",
+            "id": "cond-copd",
+            "subject": {
+              "reference": "Patient/patPA02"
+            },
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "13645005",
+                  "display": "Chronic obstructive lung disease"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "fullUrl": "Observation/obs-spo2",
+          "resource": {
+            "resourceType": "Observation",
+            "id": "obs-spo2",
+            "status": "final",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "59408-5",
+                  "display": "Oxygen saturation in Arterial blood by Pulse oximetry"
+                }
+              ]
+            },
+            "subject": {
+              "reference": "Patient/patPA02"
+            },
+            "valueQuantity": {
+              "value": 87,
+              "unit": "%"
+            }
+          }
         }
       ]
     },
@@ -149,46 +171,59 @@
       "total": 3,
       "entry": [
         {
-          "fullUrl": "Coverage/cov015",
+          "fullUrl": "Coverage/covPA02",
           "resource": {
             "resourceType": "Coverage",
-            "id": "cov015",
+            "id": "covPA02",
             "status": "active",
             "beneficiary": {
-              "reference": "Patient/pat015"
+              "reference": "Patient/patPA02"
             },
             "payor": [
               {
-                "reference": "Organization/payer1"
+                "reference": "Organization/payerCMS"
+              }
+            ],
+            "class": [
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                      "code": "plan"
+                    }
+                  ]
+                },
+                "value": "Gold-MA"
               }
             ]
           }
         },
         {
-          "fullUrl": "Patient/pat015",
+          "fullUrl": "Patient/patPA02",
           "resource": {
             "resourceType": "Patient",
-            "id": "pat015",
+            "id": "patPA02",
             "name": [
               {
-                "text": "William Oster"
+                "text": "William Carter"
               }
             ],
             "gender": "male",
-            "birthDate": "1980-06-15",
+            "birthDate": "1945-05-12",
             "address": [
               {
-                "state": "MA"
+                "state": "FL"
               }
             ]
           }
         },
         {
-          "fullUrl": "Organization/payer1",
+          "fullUrl": "Organization/payerCMS",
           "resource": {
             "resourceType": "Organization",
-            "id": "payer1",
-            "name": "Example Health Plan"
+            "id": "payerCMS",
+            "name": "Example Health Plan (CMS-0057-Ready)"
           }
         }
       ]

@@ -1,12 +1,12 @@
 {
   "hook": "order-sign",
-  "hookInstance": "os-615fc6ab",
+  "hookInstance": "os-1f115e2a",
   "user": "Practitioner/pra1255",
   "context": {
     "userId": "Practitioner/pra1255",
-    "patientId": "pat015",
+    "patientId": "patPA01",
     "selections": [
-      "DeviceRequest/devreq-e0260-1"
+      "DeviceRequest/devreq-e0601-1"
     ],
     "draftOrders": {
       "resourceType": "Bundle",
@@ -15,25 +15,22 @@
         {
           "resource": {
             "resourceType": "DeviceRequest",
-            "id": "devreq-e0260-1",
+            "id": "devreq-e0601-1",
             "status": "draft",
             "codeCodeableConcept": {
               "coding": [
                 {
                   "system": "https://www.cms.gov/medicare/coding/hcpcsreleasecodesets",
-                  "code": "E0260",
-                  "display": "Hospital bed, semi-electric"
+                  "code": "E0601",
+                  "display": "CPAP device"
                 }
               ]
             },
             "subject": {
-              "reference": "Patient/pat015"
+              "reference": "Patient/patPA01"
             },
             "requester": {
               "reference": "PractitionerRole/prr1"
-            },
-            "performer": {
-              "reference": "Organization/org123"
             }
           }
         }
@@ -45,61 +42,43 @@
     "deviceRequestBundle": {
       "resourceType": "Bundle",
       "type": "searchset",
-      "total": 6,
+      "total": 7,
       "entry": [
         {
-          "fullUrl": "DeviceRequest/devreq-e0260-1",
+          "fullUrl": "DeviceRequest/devreq-e0601-1",
           "resource": {
             "resourceType": "DeviceRequest",
-            "id": "devreq-e0260-1",
+            "id": "devreq-e0601-1",
             "status": "draft",
             "codeCodeableConcept": {
               "coding": [
                 {
                   "system": "https://www.cms.gov/medicare/coding/hcpcsreleasecodesets",
-                  "code": "E0260",
-                  "display": "Hospital bed, semi-electric"
+                  "code": "E0601",
+                  "display": "CPAP device"
                 }
               ]
             },
             "subject": {
-              "reference": "Patient/pat015"
+              "reference": "Patient/patPA01"
             },
             "requester": {
               "reference": "PractitionerRole/prr1"
-            },
-            "performer": {
-              "reference": "Organization/org123"
             }
           }
         },
         {
-          "fullUrl": "Device/dev-bed-1",
-          "resource": {
-            "resourceType": "Device",
-            "id": "dev-bed-1",
-            "type": {
-              "coding": [
-                {
-                  "system": "https://www.cms.gov/medicare/coding/hcpcsreleasecodesets",
-                  "code": "E0260"
-                }
-              ]
-            }
-          }
-        },
-        {
-          "fullUrl": "Patient/pat015",
+          "fullUrl": "Patient/patPA01",
           "resource": {
             "resourceType": "Patient",
-            "id": "pat015",
+            "id": "patPA01",
             "name": [
               {
-                "text": "William Oster"
+                "text": "Patricia Allen"
               }
             ],
-            "gender": "male",
-            "birthDate": "1980-06-15",
+            "gender": "female",
+            "birthDate": "1975-04-04",
             "address": [
               {
                 "state": "MA"
@@ -139,6 +118,49 @@
             "id": "org123",
             "name": "Good Health Clinic"
           }
+        },
+        {
+          "fullUrl": "Condition/cond-osa",
+          "resource": {
+            "resourceType": "Condition",
+            "id": "cond-osa",
+            "subject": {
+              "reference": "Patient/patPA01"
+            },
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "78275009",
+                  "display": "Obstructive sleep apnea syndrome"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "fullUrl": "Observation/obs-ahi",
+          "resource": {
+            "resourceType": "Observation",
+            "id": "obs-ahi",
+            "status": "final",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "9279-1",
+                  "display": "Apnea-hypopnea index"
+                }
+              ]
+            },
+            "subject": {
+              "reference": "Patient/patPA01"
+            },
+            "valueQuantity": {
+              "value": 22,
+              "unit": "events/hour"
+            }
+          }
         }
       ]
     },
@@ -149,33 +171,46 @@
       "total": 3,
       "entry": [
         {
-          "fullUrl": "Coverage/cov015",
+          "fullUrl": "Coverage/covPA01",
           "resource": {
             "resourceType": "Coverage",
-            "id": "cov015",
+            "id": "covPA01",
             "status": "active",
             "beneficiary": {
-              "reference": "Patient/pat015"
+              "reference": "Patient/patPA01"
             },
             "payor": [
               {
-                "reference": "Organization/payer1"
+                "reference": "Organization/payerCMS"
+              }
+            ],
+            "class": [
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                      "code": "plan"
+                    }
+                  ]
+                },
+                "value": "Gold-MA"
               }
             ]
           }
         },
         {
-          "fullUrl": "Patient/pat015",
+          "fullUrl": "Patient/patPA01",
           "resource": {
             "resourceType": "Patient",
-            "id": "pat015",
+            "id": "patPA01",
             "name": [
               {
-                "text": "William Oster"
+                "text": "Patricia Allen"
               }
             ],
-            "gender": "male",
-            "birthDate": "1980-06-15",
+            "gender": "female",
+            "birthDate": "1975-04-04",
             "address": [
               {
                 "state": "MA"
@@ -184,11 +219,11 @@
           }
         },
         {
-          "fullUrl": "Organization/payer1",
+          "fullUrl": "Organization/payerCMS",
           "resource": {
             "resourceType": "Organization",
-            "id": "payer1",
-            "name": "Example Health Plan"
+            "id": "payerCMS",
+            "name": "Example Health Plan (CMS-0057-Ready)"
           }
         }
       ]

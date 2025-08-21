@@ -1,6 +1,6 @@
 {
   "hook": "order-sign",
-  "hookInstance": "os-486070dc",
+  "hookInstance": "os-3e4cc3c7",
   "user": "Practitioner/pra1255",
   "context": {
     "userId": "Practitioner/pra1255",
@@ -132,6 +132,8 @@
         }
       ]
     },
+    "deviceRequestBundle": null,
+    "medicationRequestBundle": null,
     "coverageBundle": {
       "resourceType": "Bundle",
       "type": "searchset",

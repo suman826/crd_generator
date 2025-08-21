@@ -1,12 +1,12 @@
 {
   "hook": "order-sign",
-  "hookInstance": "os-615fc6ab",
+  "hookInstance": "os-59f75a0f",
   "user": "Practitioner/pra1255",
   "context": {
     "userId": "Practitioner/pra1255",
-    "patientId": "pat015",
+    "patientId": "patPA04",
     "selections": [
-      "DeviceRequest/devreq-e0260-1"
+      "ServiceRequest/sr-99213-1"
     ],
     "draftOrders": {
       "resourceType": "Bundle",
@@ -14,26 +14,24 @@
       "entry": [
         {
           "resource": {
-            "resourceType": "DeviceRequest",
-            "id": "devreq-e0260-1",
+            "resourceType": "ServiceRequest",
+            "id": "sr-99213-1",
             "status": "draft",
-            "codeCodeableConcept": {
+            "intent": "order",
+            "code": {
               "coding": [
                 {
-                  "system": "https://www.cms.gov/medicare/coding/hcpcsreleasecodesets",
-                  "code": "E0260",
-                  "display": "Hospital bed, semi-electric"
+                  "system": "http://www.ama-assn.org/go/cpt",
+                  "code": "99213",
+                  "display": "Office/outpatient visit est"
                 }
               ]
             },
             "subject": {
-              "reference": "Patient/pat015"
+              "reference": "Patient/patPA04"
             },
             "requester": {
               "reference": "PractitionerRole/prr1"
-            },
-            "performer": {
-              "reference": "Organization/org123"
             }
           }
         }
@@ -41,65 +39,47 @@
     }
   },
   "prefetch": {
-    "serviceRequestBundle": null,
-    "deviceRequestBundle": {
+    "serviceRequestBundle": {
       "resourceType": "Bundle",
       "type": "searchset",
-      "total": 6,
+      "total": 5,
       "entry": [
         {
-          "fullUrl": "DeviceRequest/devreq-e0260-1",
+          "fullUrl": "ServiceRequest/sr-99213-1",
           "resource": {
-            "resourceType": "DeviceRequest",
-            "id": "devreq-e0260-1",
+            "resourceType": "ServiceRequest",
+            "id": "sr-99213-1",
             "status": "draft",
-            "codeCodeableConcept": {
+            "intent": "order",
+            "code": {
               "coding": [
                 {
-                  "system": "https://www.cms.gov/medicare/coding/hcpcsreleasecodesets",
-                  "code": "E0260",
-                  "display": "Hospital bed, semi-electric"
+                  "system": "http://www.ama-assn.org/go/cpt",
+                  "code": "99213",
+                  "display": "Office/outpatient visit est"
                 }
               ]
             },
             "subject": {
-              "reference": "Patient/pat015"
+              "reference": "Patient/patPA04"
             },
             "requester": {
               "reference": "PractitionerRole/prr1"
-            },
-            "performer": {
-              "reference": "Organization/org123"
             }
           }
         },
         {
-          "fullUrl": "Device/dev-bed-1",
-          "resource": {
-            "resourceType": "Device",
-            "id": "dev-bed-1",
-            "type": {
-              "coding": [
-                {
-                  "system": "https://www.cms.gov/medicare/coding/hcpcsreleasecodesets",
-                  "code": "E0260"
-                }
-              ]
-            }
-          }
-        },
-        {
-          "fullUrl": "Patient/pat015",
+          "fullUrl": "Patient/patPA04",
           "resource": {
             "resourceType": "Patient",
-            "id": "pat015",
+            "id": "patPA04",
             "name": [
               {
-                "text": "William Oster"
+                "text": "Nina Patel"
               }
             ],
-            "gender": "male",
-            "birthDate": "1980-06-15",
+            "gender": "female",
+            "birthDate": "1988-02-21",
             "address": [
               {
                 "state": "MA"
@@ -142,6 +122,7 @@
         }
       ]
     },
+    "deviceRequestBundle": null,
     "medicationRequestBundle": null,
     "coverageBundle": {
       "resourceType": "Bundle",
@@ -149,33 +130,46 @@
       "total": 3,
       "entry": [
         {
-          "fullUrl": "Coverage/cov015",
+          "fullUrl": "Coverage/covPA04",
           "resource": {
             "resourceType": "Coverage",
-            "id": "cov015",
+            "id": "covPA04",
             "status": "active",
             "beneficiary": {
-              "reference": "Patient/pat015"
+              "reference": "Patient/patPA04"
             },
             "payor": [
               {
-                "reference": "Organization/payer1"
+                "reference": "Organization/payerCMS"
+              }
+            ],
+            "class": [
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                      "code": "plan"
+                    }
+                  ]
+                },
+                "value": "Gold-MA"
               }
             ]
           }
         },
         {
-          "fullUrl": "Patient/pat015",
+          "fullUrl": "Patient/patPA04",
           "resource": {
             "resourceType": "Patient",
-            "id": "pat015",
+            "id": "patPA04",
             "name": [
               {
-                "text": "William Oster"
+                "text": "Nina Patel"
               }
             ],
-            "gender": "male",
-            "birthDate": "1980-06-15",
+            "gender": "female",
+            "birthDate": "1988-02-21",
             "address": [
               {
                 "state": "MA"
@@ -184,11 +178,11 @@
           }
         },
         {
-          "fullUrl": "Organization/payer1",
+          "fullUrl": "Organization/payerCMS",
           "resource": {
             "resourceType": "Organization",
-            "id": "payer1",
-            "name": "Example Health Plan"
+            "id": "payerCMS",
+            "name": "Example Health Plan (CMS-0057-Ready)"
           }
         }
       ]
