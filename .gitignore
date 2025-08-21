@@ -1,0 +1,15 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-error.log*
+pnpm-lock.yaml
+package-lock.json
+# env + OS cruft
+.env
+.env.*
+.DS_Store
+Thumbs.db
+# archives & builds
+*.zip
+dist/
+build/
