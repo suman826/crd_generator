@@ -1,0 +1,49 @@
+{
+  "hook": "order-sign",
+  "hookInstance": "visionpresc-001",
+  "fhirServer": "https://example-fhir-server.com/r4",
+  "user": "Practitioner/pract123",
+  "context": {
+    "patientId": "pat001",
+    "encounterId": "enc123"
+  },
+  "systemActions": [
+    {
+      "resource": {
+        "resourceType": "VisionPrescription",
+        "id": "vision1",
+        "status": "active",
+        "patient": {
+          "reference": "Patient/pat001"
+        },
+        "dateWritten": "2025-08-29T10:00:00Z",
+        "lensSpecification": [
+          {
+            "product": {
+              "coding": [
+                {
+                  "system": "http://hl7.org/fhir/ex-visionprescriptionproduct",
+                  "code": "lens",
+                  "display": "Lens for glasses"
+                }
+              ]
+            },
+            "eye": "right",
+            "sphere": -1.25
+          }
+        ],
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "http://www.ama-assn.org/go/cpt",
+                "code": "92015",
+                "display": "Determination of refractive state"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

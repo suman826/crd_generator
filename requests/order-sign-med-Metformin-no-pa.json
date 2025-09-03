@@ -1,0 +1,37 @@
+{
+  "hook": "order-sign",
+  "hookInstance": "crd-008-test-instance",
+  "context": {
+    "userId": "Practitioner/example",
+    "patientId": "Patient/example",
+    "encounterId": "Encounter/example",
+    "selections": [
+      "MedicationRequest/example"
+    ]
+  },
+  "prefetch": {
+    "medicationRequest": {
+      "resourceType": "MedicationRequest",
+      "id": "example",
+      "status": "active",
+      "intent": "order",
+      "medicationCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+            "code": "83367",
+            "display": "Metformin 500 MG Oral Tablet"
+          }
+        ],
+        "text": "Metformin 500 MG Oral Tablet"
+      },
+      "subject": {
+        "reference": "Patient/example"
+      },
+      "authoredOn": "2025-09-01",
+      "requester": {
+        "reference": "Practitioner/example"
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "hook": "order-sign",
+  "hookInstance": "os-test-bundle-01",
+  "user": "Practitioner/pract1",
+  "context": {
+    "patientId": "Patient/pat001",
+    "draftOrders": {
+      "resourceType": "Bundle",
+      "type": "collection",
+      "entry": [
+        {
+          "resource": {
+            "resourceType": "DeviceRequest",
+            "id": "devreq-001",
+            "status": "draft",
+            "codeCodeableConcept": {
+              "coding": [
+                { "system": "https://www.cms.gov/medicare/coding/hcpcs-release-code-sets", "code": "E0424" }
+              ]
+            },
+            "subject": { "reference": "Patient/pat001" }
+          }
+        },
+        {
+          "resource": {
+            "resourceType": "ServiceRequest",
+            "id": "srvreq-001",
+            "status": "draft",
+            "code": { "coding": [ { "system": "http://www.ama-assn.org/go/cpt", "code": "70551" } ] },
+            "subject": { "reference": "Patient/pat001" }
+          }
+        }
+      ]
+    }
+  }
+}

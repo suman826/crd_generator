@@ -1,0 +1,49 @@
+{
+  "hook": "order-sign",
+  "hookInstance": "os-inpatient-001",
+  "context": {
+    "patientId": "pat456",
+    "encounterId": "enc-inpatient-1",
+    "draftOrders": {
+      "resourceType": "Bundle",
+      "type": "collection",
+      "entry": [
+        {
+          "resource": {
+            "resourceType": "ServiceRequest",
+            "id": "sr-70551-in",
+            "status": "draft",
+            "intent": "order",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://www.ama-assn.org/go/cpt",
+                  "code": "70551",
+                  "display": "MRI brain w/o contrast"
+                }
+              ]
+            },
+            "subject": {
+              "reference": "Patient/pat456"
+            },
+            "encounter": {
+              "reference": "Encounter/enc-inpatient-1"
+            }
+          }
+        },
+        {
+          "resource": {
+            "resourceType": "Encounter",
+            "id": "enc-inpatient-1",
+            "class": {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "IMP",
+              "display": "inpatient"
+            },
+            "status": "in-progress"
+          }
+        }
+      ]
+    }
+  }
+}

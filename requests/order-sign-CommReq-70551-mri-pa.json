@@ -1,0 +1,38 @@
+{
+  "hook": "order-sign",
+  "hookInstance": "commreq-001",
+  "fhirServer": "https://example-fhir-server.com/r4",
+  "user": "Practitioner/pract123",
+  "context": {
+    "patientId": "pat001",
+    "encounterId": "enc123"
+  },
+  "systemActions": [
+    {
+      "resource": {
+        "resourceType": "CommunicationRequest",
+        "id": "commreq1",
+        "status": "active",
+        "subject": {
+          "reference": "Patient/pat001"
+        },
+        "payload": [
+          {
+            "contentString": "Patient referred for MRI brain."
+          }
+        ],
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "http://www.ama-assn.org/go/cpt",
+                "code": "70551",
+                "display": "MRI brain without contrast"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

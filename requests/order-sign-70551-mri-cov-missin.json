@@ -1,0 +1,179 @@
+{
+  "hookInstance": "os-c6034c6f",
+  "user": "Practitioner/pra1255",
+  "context": {
+    "userId": "null",
+    "patientId": "patPA03",
+    "selections": [
+      "ServiceRequest/sr-70551-1"
+    ],
+    "draftOrders": {
+      "resourceType": "Bundle",
+      "type": "collection",
+      "entry": [
+        {
+          "resource": {
+            "resourceType": "ServiceRequest",
+            "id": "sr-70551-1",
+            "status": "draft",
+            "intent": "order",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://www.ama-assn.org/go/cpt",
+                  "code": "70551",
+                  "display": "MRI brain w/o contrast"
+                }
+              ]
+            },
+            "subject": {
+              "reference": "Patient/patPA03"
+            },
+            "requester": {
+              "reference": "PractitionerRole/prr1"
+            },
+            "encounter": {
+              "reference": "Encounter/enc123"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "prefetch": {
+    "serviceRequestBundle": {
+      "resourceType": "Bundle",
+      "type": "searchset",
+      "total": 7,
+      "entry": [
+        {
+          "fullUrl": "ServiceRequest/sr-70551-1",
+          "resource": {
+            "resourceType": "ServiceRequest",
+            "id": "sr-70551-1",
+            "status": "draft",
+            "intent": "order",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://www.ama-assn.org/go/cpt",
+                  "code": "70551",
+                  "display": "MRI brain w/o contrast"
+                }
+              ]
+            },
+            "subject": {
+              "reference": "Patient/patPA03"
+            },
+            "requester": {
+              "reference": "PractitionerRole/prr1"
+            },
+            "encounter": {
+              "reference": "Encounter/enc123"
+            }
+          }
+        },
+        {
+          "fullUrl": "Patient/patPA03",
+          "resource": {
+            "resourceType": "Patient",
+            "id": "patPA03",
+            "name": [
+              {
+                "text": "Juan Diaz"
+              }
+            ],
+            "gender": "male",
+            "birthDate": "1966-09-09",
+            "address": [
+              {
+                "state": "CA"
+              }
+            ]
+          }
+        },
+        {
+          "fullUrl": "PractitionerRole/prr1",
+          "resource": {
+            "resourceType": "PractitionerRole",
+            "id": "prr1",
+            "practitioner": {
+              "reference": "Practitioner/pra1255"
+            },
+            "organization": {
+              "reference": "Organization/org123"
+            }
+          }
+        },
+        {
+          "fullUrl": "Practitioner/pra1255",
+          "resource": {
+            "resourceType": "Practitioner",
+            "id": "pra1255",
+            "name": [
+              {
+                "text": "Alice Smith, MD"
+              }
+            ]
+          }
+        },
+        {
+          "fullUrl": "Organization/org123",
+          "resource": {
+            "resourceType": "Organization",
+            "id": "org123",
+            "name": "Good Health Clinic"
+          }
+        },
+        {
+          "fullUrl": "Condition/cond-headache",
+          "resource": {
+            "resourceType": "Condition",
+            "id": "cond-headache",
+            "subject": {
+              "reference": "Patient/patPA03"
+            },
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "25064002",
+                  "display": "Headache"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "fullUrl": "Encounter/enc123",
+          "resource": {
+            "resourceType": "Encounter",
+            "id": "enc123",
+            "status": "in-progress",
+            "class": {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "AMB",
+              "display": "ambulatory"
+            },
+            "subject": {
+              "reference": "Patient/patPA03"
+            },
+            "participant": [
+              {
+                "individual": {
+                  "reference": "Practitioner/pra1255"
+                }
+              }
+            ],
+            "serviceProvider": {
+              "reference": "Organization/org123"
+            }
+          }
+        }
+      ]
+    },
+    "deviceRequestBundle": null,
+    "medicationRequestBundle": null,
+    "coverageBundle": null
+  }
+}

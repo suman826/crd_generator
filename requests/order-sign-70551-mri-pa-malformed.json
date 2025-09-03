@@ -1,0 +1,40 @@
+{
+  "hook": "order-sign",
+  "hookInstance": "os-c6034c6f",
+  "user": "Practitioner/pra1255",
+  "context": {
+    "patientId": "patPA03",
+    "draftOrders": {
+      "resourceType": "Bundle",
+      "type": "collection",
+      "entry": [
+        {
+          "resource": {
+            "resourceType": "ServiceRequest",
+            "id": "sr-70551-1",
+            "status": "draft",
+            "intent": "order",
+            "extension": [
+              {
+                "url": "http://example.org/fhir/StructureDefinition/pa-requirement-flag",
+                "valueStrng": true
+              }
+            ],
+            "code": {
+              "coding": [
+                {
+                  "system": "http://www.ama-assn.org/go/cpt",
+                  "code": "70551",
+                  "display": "MRI brain w/o contrast"
+                }
+              ]
+            },
+            "subject": {
+              "reference": "Patient/patPA03"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

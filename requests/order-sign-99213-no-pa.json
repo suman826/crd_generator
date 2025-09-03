@@ -1,0 +1,191 @@
+{
+  "hook": "order-sign",
+  "hookInstance": "os-59f75a0f",
+  "user": "Practitioner/pra1255",
+  "context": {
+    "userId": "Practitioner/pra1255",
+    "patientId": "patPA04",
+    "selections": [
+      "ServiceRequest/sr-99213-1"
+    ],
+    "draftOrders": {
+      "resourceType": "Bundle",
+      "type": "collection",
+      "entry": [
+        {
+          "resource": {
+            "resourceType": "ServiceRequest",
+            "id": "sr-99213-1",
+            "status": "draft",
+            "intent": "order",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://www.ama-assn.org/go/cpt",
+                  "code": "99213",
+                  "display": "Office/outpatient visit est"
+                }
+              ]
+            },
+            "subject": {
+              "reference": "Patient/patPA04"
+            },
+            "requester": {
+              "reference": "PractitionerRole/prr1"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "prefetch": {
+    "serviceRequestBundle": {
+      "resourceType": "Bundle",
+      "type": "searchset",
+      "total": 5,
+      "entry": [
+        {
+          "fullUrl": "ServiceRequest/sr-99213-1",
+          "resource": {
+            "resourceType": "ServiceRequest",
+            "id": "sr-99213-1",
+            "status": "draft",
+            "intent": "order",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://www.ama-assn.org/go/cpt",
+                  "code": "99213",
+                  "display": "Office/outpatient visit est"
+                }
+              ]
+            },
+            "subject": {
+              "reference": "Patient/patPA04"
+            },
+            "requester": {
+              "reference": "PractitionerRole/prr1"
+            }
+          }
+        },
+        {
+          "fullUrl": "Patient/patPA04",
+          "resource": {
+            "resourceType": "Patient",
+            "id": "patPA04",
+            "name": [
+              {
+                "text": "Nina Patel"
+              }
+            ],
+            "gender": "female",
+            "birthDate": "1988-02-21",
+            "address": [
+              {
+                "state": "MA"
+              }
+            ]
+          }
+        },
+        {
+          "fullUrl": "PractitionerRole/prr1",
+          "resource": {
+            "resourceType": "PractitionerRole",
+            "id": "prr1",
+            "practitioner": {
+              "reference": "Practitioner/pra1255"
+            },
+            "organization": {
+              "reference": "Organization/org123"
+            }
+          }
+        },
+        {
+          "fullUrl": "Practitioner/pra1255",
+          "resource": {
+            "resourceType": "Practitioner",
+            "id": "pra1255",
+            "name": [
+              {
+                "text": "Alice Smith, MD"
+              }
+            ]
+          }
+        },
+        {
+          "fullUrl": "Organization/org123",
+          "resource": {
+            "resourceType": "Organization",
+            "id": "org123",
+            "name": "Good Health Clinic"
+          }
+        }
+      ]
+    },
+    "deviceRequestBundle": null,
+    "medicationRequestBundle": null,
+    "coverageBundle": {
+      "resourceType": "Bundle",
+      "type": "searchset",
+      "total": 3,
+      "entry": [
+        {
+          "fullUrl": "Coverage/covPA04",
+          "resource": {
+            "resourceType": "Coverage",
+            "id": "covPA04",
+            "status": "active",
+            "beneficiary": {
+              "reference": "Patient/patPA04"
+            },
+            "payor": [
+              {
+                "reference": "Organization/payerCMS"
+              }
+            ],
+            "class": [
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                      "code": "plan"
+                    }
+                  ]
+                },
+                "value": "Gold-MA"
+              }
+            ]
+          }
+        },
+        {
+          "fullUrl": "Patient/patPA04",
+          "resource": {
+            "resourceType": "Patient",
+            "id": "patPA04",
+            "name": [
+              {
+                "text": "Nina Patel"
+              }
+            ],
+            "gender": "female",
+            "birthDate": "1988-02-21",
+            "address": [
+              {
+                "state": "MA"
+              }
+            ]
+          }
+        },
+        {
+          "fullUrl": "Organization/payerCMS",
+          "resource": {
+            "resourceType": "Organization",
+            "id": "payerCMS",
+            "name": "Example Health Plan (CMS-0057-Ready)"
+          }
+        }
+      ]
+    }
+  }
+}

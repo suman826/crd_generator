@@ -1,0 +1,49 @@
+{
+  "hook": "order-sign",
+  "hookInstance": "os-outpatient-001",
+  "context": {
+    "patientId": "pat123",
+    "encounterId": "enc-outpatient-1",
+    "draftOrders": {
+      "resourceType": "Bundle",
+      "type": "collection",
+      "entry": [
+        {
+          "resource": {
+            "resourceType": "ServiceRequest",
+            "id": "sr-70551-out",
+            "status": "draft",
+            "intent": "order",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://www.ama-assn.org/go/cpt",
+                  "code": "70551",
+                  "display": "MRI brain w/o contrast"
+                }
+              ]
+            },
+            "subject": {
+              "reference": "Patient/pat123"
+            },
+            "encounter": {
+              "reference": "Encounter/enc-outpatient-1"
+            }
+          }
+        },
+        {
+          "resource": {
+            "resourceType": "Encounter",
+            "id": "enc-outpatient-1",
+            "class": {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "AMB",
+              "display": "ambulatory"
+            },
+            "status": "in-progress"
+          }
+        }
+      ]
+    }
+  }
+}

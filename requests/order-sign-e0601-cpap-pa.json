@@ -1,0 +1,44 @@
+{
+  "hook": "order-view",
+  "hookInstance": "1234567890",
+  "fhirServer": "https://crd.davinci.hl7.org/r4",
+  "context": {
+    "userId": "Practitioner/pract1",
+    "patientId": null,
+    "encounterId": "Encounter/example"
+  },
+  "prefetch": {
+    "deviceRequest": {
+      "resourceType": "DeviceRequest",
+      "id": "devreq-e0601-1",
+      "status": "draft",
+      "intent": "order",
+      "authoredOn": "2025-08-21T14:00:00Z",
+      "codeCodeableConcept": {
+        "coding": [
+          {
+            "system": "https://www.cms.gov/medicare/coding/hcpcsreleasecodesets",
+            "code": "E0601",
+            "display": "CPAP device"
+          }
+        ]
+      },
+      "subject": {
+        "reference": "Patient/null"
+      }
+    },
+    "patient": {
+      "resourceType": "Patient",
+      "id": null,
+      "name": [
+        {
+          "use": "official",
+          "family": "Doe",
+          "given": ["John"]
+        }
+      ],
+      "gender": "male",
+      "birthDate": "1970-01-01"
+    }
+  }
+}
