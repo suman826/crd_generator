@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # CRD Client (discovery-aligned prefetch)
 order-sign-e0601-cpap-pa.json — CPAP (E0601) with OSA diagnosis and AHI observation (supports PA).
 
@@ -15,6 +14,3 @@ order-sign-med-ozempic-pa.json — Semaglutide with BMI and A1c observations; PA
 order-sign-med-adalimumab-pa.json — Adalimumab (Humira) with RA diagnosis and prior methotrexate exposure (step-therapy evidence).
 
 order-sign-g0180-homehealth-pa.json — Home health certification (G0180) with deconditioning.
-=======
-# crd_generator
->>>>>>> ff0630286c7f218f7e25fe7a160e698a19004bae

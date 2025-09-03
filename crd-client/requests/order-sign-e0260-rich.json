@@ -1,0 +1,188 @@
+{
+  "hook": "order-sign",
+  "hookInstance": "os-3e4cc3c7",
+  "user": "Practitioner/pra1255",
+  "context": {
+    "userId": "Practitioner/pra1255",
+    "patientId": "pat015",
+    "selections": [
+      "ServiceRequest/servreq-e0260-1"
+    ],
+    "draftOrders": {
+      "resourceType": "Bundle",
+      "type": "collection",
+      "entry": [
+        {
+          "resource": {
+            "resourceType": "ServiceRequest",
+            "id": "servreq-e0260-1",
+            "status": "draft",
+            "intent": "order",
+            "code": {
+              "coding": [
+                {
+                  "system": "https://www.cms.gov/medicare/coding/hcpcsreleasecodesets",
+                  "code": "E0260",
+                  "display": "Hospital bed, semi-electric"
+                }
+              ]
+            },
+            "subject": {
+              "reference": "Patient/pat015"
+            },
+            "requester": {
+              "reference": "PractitionerRole/prr1"
+            },
+            "performer": [
+              {
+                "reference": "Organization/org123"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "prefetch": {
+    "serviceRequestBundle": {
+      "resourceType": "Bundle",
+      "type": "searchset",
+      "total": 5,
+      "entry": [
+        {
+          "fullUrl": "ServiceRequest/servreq-e0260-1",
+          "resource": {
+            "resourceType": "ServiceRequest",
+            "id": "servreq-e0260-1",
+            "status": "draft",
+            "intent": "order",
+            "code": {
+              "coding": [
+                {
+                  "system": "https://www.cms.gov/medicare/coding/hcpcsreleasecodesets",
+                  "code": "E0260",
+                  "display": "Hospital bed, semi-electric"
+                }
+              ]
+            },
+            "subject": {
+              "reference": "Patient/pat015"
+            },
+            "requester": {
+              "reference": "PractitionerRole/prr1"
+            },
+            "performer": [
+              {
+                "reference": "Organization/org123"
+              }
+            ]
+          }
+        },
+        {
+          "fullUrl": "Patient/pat015",
+          "resource": {
+            "resourceType": "Patient",
+            "id": "pat015",
+            "name": [
+              {
+                "text": "William Oster"
+              }
+            ],
+            "gender": "male",
+            "birthDate": "1980-06-15",
+            "address": [
+              {
+                "state": "MA"
+              }
+            ]
+          }
+        },
+        {
+          "fullUrl": "PractitionerRole/prr1",
+          "resource": {
+            "resourceType": "PractitionerRole",
+            "id": "prr1",
+            "practitioner": {
+              "reference": "Practitioner/pra1255"
+            },
+            "organization": {
+              "reference": "Organization/org123"
+            }
+          }
+        },
+        {
+          "fullUrl": "Practitioner/pra1255",
+          "resource": {
+            "resourceType": "Practitioner",
+            "id": "pra1255",
+            "name": [
+              {
+                "text": "Alice Smith, MD"
+              }
+            ]
+          }
+        },
+        {
+          "fullUrl": "Organization/org123",
+          "resource": {
+            "resourceType": "Organization",
+            "id": "org123",
+            "name": "Good Health Clinic"
+          }
+        }
+      ]
+    },
+    "deviceRequestBundle": null,
+    "medicationRequestBundle": null,
+    "coverageBundle": {
+      "resourceType": "Bundle",
+      "type": "searchset",
+      "total": 3,
+      "entry": [
+        {
+          "fullUrl": "Coverage/cov015",
+          "resource": {
+            "resourceType": "Coverage",
+            "id": "cov015",
+            "status": "active",
+            "beneficiary": {
+              "reference": "Patient/pat015"
+            },
+            "payor": [
+              {
+                "reference": "Organization/payer1"
+              }
+            ]
+          }
+        },
+        {
+          "fullUrl": "Patient/pat015",
+          "resource": {
+            "resourceType": "Patient",
+            "id": "pat015",
+            "name": [
+              {
+                "text": "William Oster"
+              }
+            ],
+            "gender": "male",
+            "birthDate": "1980-06-15",
+            "address": [
+              {
+                "state": "MA"
+              }
+            ]
+          }
+        },
+        {
+          "fullUrl": "Organization/payer1",
+          "resource": {
+            "resourceType": "Organization",
+            "id": "payer1",
+            "name": "Example Health Plan"
+          }
+        }
+      ]
+    }
+  }
+}

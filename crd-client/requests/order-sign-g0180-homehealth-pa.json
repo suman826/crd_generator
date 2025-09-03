@@ -1,0 +1,210 @@
+{
+  "hook": "order-sign",
+  "hookInstance": "os-96df9ea0",
+  "user": "Practitioner/pra1255",
+  "context": {
+    "userId": "Practitioner/pra1255",
+    "patientId": "patPA08",
+    "selections": [
+      "ServiceRequest/sr-g0180-1"
+    ],
+    "draftOrders": {
+      "resourceType": "Bundle",
+      "type": "collection",
+      "entry": [
+        {
+          "resource": {
+            "resourceType": "ServiceRequest",
+            "id": "sr-g0180-1",
+            "status": "draft",
+            "intent": "order",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://www.ama-assn.org/go/cpt-hcpcs",
+                  "code": "G0180",
+                  "display": "Home health plan of care certification"
+                }
+              ]
+            },
+            "subject": {
+              "reference": "Patient/patPA08"
+            },
+            "requester": {
+              "reference": "PractitionerRole/prr1"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "prefetch": {
+    "serviceRequestBundle": {
+      "resourceType": "Bundle",
+      "type": "searchset",
+      "total": 6,
+      "entry": [
+        {
+          "fullUrl": "ServiceRequest/sr-g0180-1",
+          "resource": {
+            "resourceType": "ServiceRequest",
+            "id": "sr-g0180-1",
+            "status": "draft",
+            "intent": "order",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://www.ama-assn.org/go/cpt-hcpcs",
+                  "code": "G0180",
+                  "display": "Home health plan of care certification"
+                }
+              ]
+            },
+            "subject": {
+              "reference": "Patient/patPA08"
+            },
+            "requester": {
+              "reference": "PractitionerRole/prr1"
+            }
+          }
+        },
+        {
+          "fullUrl": "Patient/patPA08",
+          "resource": {
+            "resourceType": "Patient",
+            "id": "patPA08",
+            "name": [
+              {
+                "text": "Mary Johnson"
+              }
+            ],
+            "gender": "female",
+            "birthDate": "1948-08-08",
+            "address": [
+              {
+                "state": "MA"
+              }
+            ]
+          }
+        },
+        {
+          "fullUrl": "PractitionerRole/prr1",
+          "resource": {
+            "resourceType": "PractitionerRole",
+            "id": "prr1",
+            "practitioner": {
+              "reference": "Practitioner/pra1255"
+            },
+            "organization": {
+              "reference": "Organization/org123"
+            }
+          }
+        },
+        {
+          "fullUrl": "Practitioner/pra1255",
+          "resource": {
+            "resourceType": "Practitioner",
+            "id": "pra1255",
+            "name": [
+              {
+                "text": "Alice Smith, MD"
+              }
+            ]
+          }
+        },
+        {
+          "fullUrl": "Organization/org123",
+          "resource": {
+            "resourceType": "Organization",
+            "id": "org123",
+            "name": "Good Health Clinic"
+          }
+        },
+        {
+          "fullUrl": "Condition/cond-debility",
+          "resource": {
+            "resourceType": "Condition",
+            "id": "cond-debility",
+            "subject": {
+              "reference": "Patient/patPA08"
+            },
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "248279007",
+                  "display": "Physical deconditioning"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "deviceRequestBundle": null,
+    "medicationRequestBundle": null,
+    "coverageBundle": {
+      "resourceType": "Bundle",
+      "type": "searchset",
+      "total": 3,
+      "entry": [
+        {
+          "fullUrl": "Coverage/covPA08",
+          "resource": {
+            "resourceType": "Coverage",
+            "id": "covPA08",
+            "status": "active",
+            "beneficiary": {
+              "reference": "Patient/patPA08"
+            },
+            "payor": [
+              {
+                "reference": "Organization/payerCMS"
+              }
+            ],
+            "class": [
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+                      "code": "plan"
+                    }
+                  ]
+                },
+                "value": "Gold-MA"
+              }
+            ]
+          }
+        },
+        {
+          "fullUrl": "Patient/patPA08",
+          "resource": {
+            "resourceType": "Patient",
+            "id": "patPA08",
+            "name": [
+              {
+                "text": "Mary Johnson"
+              }
+            ],
+            "gender": "female",
+            "birthDate": "1948-08-08",
+            "address": [
+              {
+                "state": "MA"
+              }
+            ]
+          }
+        },
+        {
+          "fullUrl": "Organization/payerCMS",
+          "resource": {
+            "resourceType": "Organization",
+            "id": "payerCMS",
+            "name": "Example Health Plan (CMS-0057-Ready)"
+          }
+        }
+      ]
+    }
+  }
+}
